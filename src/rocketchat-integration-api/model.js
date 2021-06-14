@@ -1,22 +1,21 @@
 const Joi = require('joi');
 
 
-const requestSchema = Joi.object({
+const loginRequestSchema = Joi.object({
     username: Joi.string()
-        .alphanum()
         .required(),
     password: Joi.string()
-        .alphanum()
-        .required(),
+        .required()
+})
+
+const sendMessageRequestSchema = Joi.object({
     recipient: Joi.string()
-        .alphanum()
         .required(),
     message: Joi.string()
-        .required(),
-    taskId: Joi.string()
-        .regex(/^[a-z]{4}\d{4}$/)
         .required()
-});
+})
 
-
-module.exports = requestSchema
+module.exports = {
+    loginRequestSchema,
+    sendMessageRequestSchema
+}
