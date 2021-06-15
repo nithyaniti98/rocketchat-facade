@@ -6,11 +6,12 @@ const {
     InvalidRecipientError
 } = require("./errors");
 const config = require("../config");
+const sendReceivedMessage = require('./rocketchat-integration-api/client')
 
-const { dev: { HOST, SSL } } = config;
+const {dev: {ROCKETCHAT_HOST, SSL}} = config;
 
 
-const startBot = async(username, password, hostUrl = HOST) => {
+const startBot = async (username, password, hostUrl = ROCKETCHAT_HOST) => {
     await driver.connect({host: hostUrl, useSsl: SSL})
         .catch(err => {
             throw new RocketChatConnectionError(err.message, {
@@ -45,6 +46,7 @@ const subscribeBot = async() => {
 const processMessages = async(err, message, messageOptions) => {
     if (!err) {
         console.log(message)
+        sendReceivedMessage(message)
     }
 }
 

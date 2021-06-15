@@ -23,7 +23,8 @@
     "chai-http": "^4.3.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "joi": "^17.4.0"
+    "joi": "^17.4.0",
+    "unirest": "^0.6.0"
   },
   "directories": {
     "test": "test"

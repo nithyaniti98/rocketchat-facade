@@ -13,14 +13,14 @@ const {
     sendMessageThroughBot,
 } = require("../src/rocketChatClient");
 const config = require("../config")
-const { dev: { USERNAME, PASSWORD, HOST} } = config
-const { test: { RECIPIENT } } = config
+const {dev: {USERNAME, PASSWORD, ROCKETCHAT_HOST}} = config
+const {test: {RECIPIENT}} = config
 
 
-describe('Spinning up RocketChat', function() {
+describe('Spinning up RocketChat', function () {
     describe('Connecting to RocketChat', function () {
         it('should connect successfully if no error', async () => {
-            await expect(startBot(USERNAME, PASSWORD, HOST))
+            await expect(startBot(USERNAME, PASSWORD, ROCKETCHAT_HOST))
                 .to.be.fulfilled
         });
         it('should throw an 5xx server error if host url is wrong', async () => {
